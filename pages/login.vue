@@ -31,6 +31,7 @@
 <script>
 export default {
   auth: 'guest',
+  layout: 'simple',
   data () {
     return {
       login: {
@@ -45,8 +46,11 @@ export default {
         const response = await this.$auth.loginWith('local', {
           data: this.login
         })
+        this.$buefy.toast.open(`Welcome ${response.data.user.name}`)
+        this.$router.push({ path: '/' })
         console.log(response)
       } catch (err) {
+        this.$buefy.toast.open('Something happened')
         console.log(err)
       }
     }

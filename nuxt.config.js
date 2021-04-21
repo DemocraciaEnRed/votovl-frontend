@@ -91,9 +91,23 @@ export default {
         endpoints: {
           login: { url: '/v1/auth/login', method: 'post' },
           refresh: { url: '/api/auth/refresh', method: 'post' },
-          logout: { url: '/v1/auth/logout', method: 'post' },
+          // logout: { url: '/v1/auth/logout', method: 'post' },
+          logout: false, // Just delete the tokens in localstorage
           user: { url: '/v1/auth/user', method: 'get' }
         }
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/'
+    },
+    cookie: {
+      prefix: 'auth.',
+      options: {
+        path: '/', // path where the cookie is visible. Default is '/'.
+        secure: false // sets whether the cookie requires a secure protocol (https). Default is false, should be set to true if possible.
       }
     }
   },
