@@ -17,10 +17,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/scss/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/vee-validate.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,6 +42,8 @@ export default {
     '@nuxtjs/axios',
     // https://dev.auth.nuxtjs.org
     '@nuxtjs/auth-next'
+    // https://github.com/lewyuburi/nuxt-validate
+    // 'nuxt-validate'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -59,6 +63,19 @@ export default {
       baseURL: process.env.BASE_URL
     }
   },
+
+  buefy: {
+    css: false,
+    materialDesignIcons: false
+  },
+
+  // nuxtValidate: {
+  //   lang: 'es',
+  //   rules: ['required', 'email', 'min', 'email'],
+  //   classes: {
+  //     invalid: 'is-danger'
+  //   }
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -98,9 +115,9 @@ export default {
       }
     },
     redirect: {
-      login: '/login',
-      logout: '/login',
-      callback: '/login',
+      login: '/auth/login',
+      logout: '/auth/login',
+      callback: '/auth/login',
       home: '/'
     },
     cookie: {
